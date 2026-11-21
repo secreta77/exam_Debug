@@ -1,6 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormsModule,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../../cart/services/cart.service';
 import { OrderSummaryComponent } from '../../components/order-summary/order-summary.component';
@@ -9,7 +14,7 @@ import { CheckoutService } from '../../services/checkout.service';
 
 @Component({
   selector: 'app-checkout-page',
-  imports: [DatePipe, RouterLink, OrderSummaryComponent,ReactiveFormsModule],
+  imports: [DatePipe, RouterLink, OrderSummaryComponent, ReactiveFormsModule],
   templateUrl: './checkout-page.container.html',
   styleUrl: './checkout-page.container.css',
 })
