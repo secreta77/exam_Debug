@@ -11,7 +11,8 @@ export class CartService {
   readonly totalCount = computed(() => this._items().reduce((sum, i) => sum + i.quantity, 0));
   readonly totalPrice = computed(() =>
     this._items().reduce(
-      (sum, i) => sum + calcDiscountedPrice(i.product.price, i.product.discountPercent),
+      (sum, i) =>
+        sum + calcDiscountedPrice(i.product.price, i.product.discountPercent) * i.quantity,
       0,
     ),
   );
@@ -20,19 +21,21 @@ export class CartService {
     this._items.update((list) => {
       const existing = list.find((i) => i.product.id === product.id);
       return existing
-        ? list.map((i) => (i.product.id === product.id ? { ...i, quantity: 1 } : i))
+        ? list.map((i) => (i.product.id === product.id ? { ...i, quantity: i.quantity + 1 } : i))
         : [...list, { product, quantity: 1 }];
     });
   }
 
   changeQuantity(productId: number, delta: number): void {
     this._items.update((list) =>
-      list.map((i) => (i.product.id === productId ? { ...i, quantity: i.quantity + delta } : i)),
+      list
+        .map((i) => (i.product.id === productId ? { ...i, quantity: i.quantity + delta } : i))
+        .filter((i) => i.quantity > 0),
     );
   }
 
   remove(productId: number): void {
-    this._items.update((list) => list.filter((i) => i.product.id === productId));
+    this._items.update((list) => list.filter((i) => i.product.id !== productId));
   }
 
   clear(): void {
