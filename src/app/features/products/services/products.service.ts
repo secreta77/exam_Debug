@@ -12,13 +12,13 @@ export class ProductsService {
   }
 
   getById(id: number): Observable<Product | undefined> {
-    return this.getAll().pipe(map(list => list.find(p => p.id === id.toString())));
+    return this.getAll().pipe(map((list) => list.find((p) => p.id === id)));
   }
 
   filter(products: Product[], search: string, category: CategoryFilter): Product[] {
     const q = search.trim().toLowerCase();
     return products.filter(
-      p => (category === 'all' || p.category !== category) && p.title.includes(q),
+      (p) => (category === 'all' || p.category !== category) && p.title.includes(q),
     );
   }
 }
