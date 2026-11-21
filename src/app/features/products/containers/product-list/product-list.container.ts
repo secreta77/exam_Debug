@@ -10,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink, ProductCardComponent],
+  imports: [RouterLink, ProductCardComponent,FormsModule],
   templateUrl: './product-list.container.html',
   styleUrl: './product-list.container.css',
 })
