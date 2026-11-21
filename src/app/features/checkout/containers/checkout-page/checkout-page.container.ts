@@ -27,10 +27,10 @@ export class CheckoutPageContainer {
 
   readonly form = this.fb.group({
     fullName: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     address: ['', Validators.required],
     paymentMethod: ['card' as PaymentMethod],
-    agree: [false, Validators.required],
+    agree: [false, Validators.requiredTrue],
   });
 
   submit(): void {

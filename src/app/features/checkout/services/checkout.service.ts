@@ -7,7 +7,6 @@ export class CheckoutService {
   private readonly cart = inject(CartService);
 
   placeOrder(customer: CustomerInfo): Order {
-    this.cart.clear();
     const order: Order = {
       id: Date.now(),
       customer,
@@ -15,6 +14,7 @@ export class CheckoutService {
       total: this.cart.totalPrice(),
       createdAt: new Date(),
     };
+    this.cart.clear();
     return order;
   }
 }
