@@ -1,0 +1,54 @@
+<section class="page">
+  @if (order(); as o) {
+    <div class="success">
+      <h2>შეკვეთა მიღებულია!</h2>
+      <p>ნომერი: #{{ o.id }} · {{ o.createdAt | date: 'dd/MM/yyyy HH:mm' }}</p>
+      <app-order-summary [items]="o.items" [total]="o.total" />
+      <a routerLink="/products">მაღაზიაში დაბრუნება</a>
+    </div>
+  } @else {
+    <h2>გადახდა</h2>
+    <div class="layout">
+      <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <label>
+          სახელი
+          <input formControlName="fullname" type="text" />
+        </label>
+        @let name = form.controls.fullName;
+        @if (name.touched && name.invalid) {
+          <small class="error">სახელი სავალდებულოა (მინ. 3 სიმბოლო)</small>
+        }
+
+        <label>
+          ელფოსტა
+          <input formControlName="email" type="email" />
+        </label>
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <small class="error">შეიყვანეთ სწორი ელფოსტა</small>
+        }
+
+        <label>
+          მისამართი
+          <input formControlName="address" type="text" />
+        </label>
+
+        <label>
+          გადახდის მეთოდი
+          <select formControlName="paymentMethod">
+            <option value="card">ბარათი</option>
+            <option value="cash">ნაღდი</option>
+          </select>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" formControlName="agree" />
+          ვეთანხმები პირობებს
+        </label>
+
+        <button type="submit" [disabled]="form.invalid">შეკვეთის გაფორმება</button>
+      </form>
+
+      <app-order-summary [item]="cart.items()" [total]="cart.totalPrice()" />
+    </div>
+  }
+</section>

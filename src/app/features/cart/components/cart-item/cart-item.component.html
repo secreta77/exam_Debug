@@ -1,0 +1,12 @@
+<li class="item">
+  <div class="info">
+    <strong>{{ item().product.title }}</strong>
+    <span>{{ item().product.price | discountPrice: item().product.discountPercent | currency }}</span>
+  </div>
+  <div class="qty">
+    <button type="button" class="secondary" (click)="quantityChange.emit(-1)">−</button>
+    <span>{{ item().quantity }}</span>
+    <button type="button" class="secondary" (click)="quantityChange.emit(1)">+</button>
+  </div>
+  <button type="button" class="danger" (click)="removed.emit()">✕</button>
+</li>

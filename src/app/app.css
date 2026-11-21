@@ -1,0 +1,7 @@
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; }
+.brand { font-weight: 800; font-size: 1.3rem; color: var(--primary); text-decoration: none; }
+nav { display: flex; gap: 16px; }
+nav a { text-decoration: none; color: var(--text); padding: 6px 10px; border-radius: 8px; }
+nav a.active { background: var(--primary); color: #fff; }
+.count { background: var(--danger); color: #fff; border-radius: 999px; padding: 0 8px; font-size: 0.8rem; margin-left: 4px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 24px; }

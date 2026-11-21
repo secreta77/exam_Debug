@@ -1,0 +1,24 @@
+<section class="page">
+  <h2>კალათა</h2>
+
+  @if (cart.items().length === 0) {
+    <p class="empty">კალათა ცარიელია</p>
+    <a routerLink="/products">პროდუქტებზე გადასვლა</a>
+  } @else {
+    <ul class="list">
+      @for (item of cart.items(); track item.product.id) {
+        <app-cart-item
+          [item]="item"
+          (quantityChange)="cart.changeQuantity(item.product.id, $event)"
+          (removed)="cart.remove(item.product.id)"
+        />
+      }
+    </ul>
+
+    <div class="summary">
+      <p>სულ: <strong>{{ cart.totalPrice() | currency }}</strong> ({{ cart.totalCount() }} ერთეული)</p>
+      <button type="button" class="secondary" (click)="cart.clear()">გასუფთავება</button>
+      <a class="button" routerLink="/checkout">შეკვეთა</a>
+    </div>
+  }
+</section>

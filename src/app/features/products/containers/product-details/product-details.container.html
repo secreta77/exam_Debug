@@ -1,0 +1,12 @@
+<a routerLink="/products" class="back">← უკან</a>
+
+@if (product$ | async; as product) {
+  <article class="details">
+    <h2>{{ product.title }}</h2>
+    <p class="meta">{{ product.category | titlecase }} · {{ product.inStock ? 'მარაგშია' : 'არ არის მარაგში' }}</p>
+    <p class="price">{{ product.price | discountPrice: product.discountPercent | currency }}</p>
+    <button type="button" [disabled]="!product.inStock" (click)="addToCart(product)">კალათაში დამატება</button>
+  </article>
+} @else {
+  <p class="empty">იტვირთება ან ვერ მოიძებნა...</p>
+}

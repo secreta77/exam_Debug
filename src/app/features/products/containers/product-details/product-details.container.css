@@ -1,0 +1,5 @@
+.back { display: inline-block; margin-bottom: 16px; }
+.details { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; max-width: 480px; }
+.meta { color: var(--muted); }
+.price { font-size: 1.6rem; font-weight: 700; }
+.empty { color: var(--muted); }

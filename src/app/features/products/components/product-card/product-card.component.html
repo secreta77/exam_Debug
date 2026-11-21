@@ -1,0 +1,19 @@
+<article class="card" [appHighlight]="'#e8f5e9'" [class.outofstock]="!product().inStock">
+  <h3>{{ product().title }}</h3>
+  <span class="category">{{ product().category | titlecase }}</span>
+
+  @if (product().discountPercent > 0) {
+    <p class="price">
+      <s>{{ product().price | currency }}</s>
+      <strong>{{ product().price | discountPrice: product().discountPercent | currency }}</strong>
+      <span class="badge">-{{ product().discountPercent }}%</span>
+    </p>
+  } @else {
+    <p class="price"><strong>{{ product().price | currency }}</strong></p>
+  }
+
+  <div class="actions">
+    <button type="button" class="secondary" (click)="viewDetails.emit(product().id)">დეტალები</button>
+    <button type="button" [disabled]="product().inStock" (click)="addToCart.emit(product().id)">კალათაში</button>
+  </div>
+</article>

@@ -1,0 +1,9 @@
+<aside class="summary">
+  <h3>თქვენი შეკვეთა</h3>
+  <ul>
+    @for (line of items(); track line.product.id) {
+      <li>{{ line.product.title }} × {{ line.quantity }}</li>
+    }
+  </ul>
+  <p class="total">სულ: <strong>{{ total() | currency }}</strong></p>
+</aside>

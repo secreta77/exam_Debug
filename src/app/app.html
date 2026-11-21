@@ -1,0 +1,13 @@
+<header class="topbar">
+  <a class="brand" routerLink="/products">TechShop</a>
+  <nav>
+    <a routerLink="/products" routerLinkActive="active">პროდუქტები</a>
+    <a routerLink="/cart" routerLinkActive="active">
+      კალათა <span class="count">{{ cart.totalCount() }}</span>
+    </a>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet />
+</main>
