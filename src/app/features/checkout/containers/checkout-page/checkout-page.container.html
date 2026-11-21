@@ -48,7 +48,7 @@
         <button type="submit" [disabled]="form.invalid">შეკვეთის გაფორმება</button>
       </form>
 
-      <app-order-summary [item]="cart.items()" [total]="cart.totalPrice()" />
+      <app-order-summary [items]="cart.items()" [total]="cart.totalPrice()" />
     </div>
   }
 </section>
