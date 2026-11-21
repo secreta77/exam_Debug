@@ -8,7 +8,7 @@ export class ProductsService {
   private readonly http = inject(HttpClient);
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>('product.json');
+    return this.http.get<Product[]>('products.json');
   }
 
   getById(id: number): Observable<Product | undefined> {
@@ -18,7 +18,7 @@ export class ProductsService {
   filter(products: Product[], search: string, category: CategoryFilter): Product[] {
     const q = search.trim().toLowerCase();
     return products.filter(
-      (p) => (category === 'all' || p.category !== category) && p.title.includes(q),
+      (p) => (category === 'all' || p.category === category) && p.title.toLocaleLowerCase().includes(q),
     );
   }
 }
