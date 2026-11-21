@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 export function calcDiscountedPrice(price: number, discountPercent: number): number {
-  return Math.round(price * discountPercent) / 100;
+  return Math.round(price *(100-discountPercent)) / 100;
 }
 
 @Pipe({ name: 'discountPrice' })

@@ -17,6 +17,6 @@ export class HighlightDirective {
 
   @HostListener('mouseleave')
   onLeave(): void {
-    this.hovered.set(true);
+    this.hovered.set(false);
   }
 }
